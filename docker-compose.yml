@@ -1,0 +1,88 @@
+services:
+    app:
+        container_name: ${APP_SERVICE_NAME:-peak-app}
+        build:
+            context: .
+            dockerfile: .docker/v2/php/8.4/nginx/Dockerfile
+            target: ${PHP_DOCKER_TARGET:-development}
+            args:
+                DOCKER_RESOURCES_PATH: .docker/v2/common
+                #PROJECT_BUILD_HOOKS_PATH: ".scripts/.docker-snippets/builds"
+                JS_RUNTIME_REQUIRE_NODE: "true"
+                JS_RUNTIME_NODE_VERSION: "24"
+                JS_RUNTIME_REQUIRE_YARN: "true"
+                PHP_EXT_PDO_PGSQL: "false"
+                PHP_EXT_PGSQL: "false"
+                INSTALL_DB_PGSQL_CLIENT: "false"
+                PHP_EXT_REDIS: "true"
+                PHP_EXT_XDEBUG: "false"
+                ENABLE_HEALTHCHECK: "true"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        ports:
+            - '${APP_PORT:-8080}:80'
+            - '${VITE_PORT}:${VITE_PORT}'
+        environment:
+            PUID: ${WWWUSER:-1000}
+            PGID: ${WWWGROUP:-1000}
+            VITE_PORT: '${VITE_PORT:-5173}'
+            PHP_IDE_CONFIG: "serverName=docker" # Must match the server name in PHPStorm's server configuration in case of using Xdebug
+        networks:
+            - optimesh
+        volumes:
+            - '.:/var/www/html' # this adds/attach/mount the current directory to the container, so container reflects local changes
+            - './.scripts/.docker-snippets/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf' # custom nginx configuration
+            - './.scripts/.docker-snippets/php/php.ini:/usr/local/etc/php/conf.d/99-custom.ini' # customize php configuration according to your needs if needed
+            - './.scripts/.docker-snippets/s6/cont-init.d/99-install-stripe.sh:/etc/cont-init.d/99-install-stripe' # Install Stripe CLI on startup
+
+    # PostgreSQL with PostGIS for geospatial features
+#    postgres:
+#        container_name: ${APP_SERVICE_NAME:-peak-app}-postgres
+#        image: postgis/postgis:16-3.4
+#        ports:
+#            - '${FORWARD_DB_PORT:-5432}:5432'
+#        environment:
+#            POSTGRES_DB: '${DB_DATABASE:-geocoder}'
+#            POSTGRES_USER: '${DB_USERNAME:-geocoder}'
+#            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+#            PGDATA: /var/lib/postgresql/data/pgdata
+#        volumes:
+#            - 'geocoder-postgres:/var/lib/postgresql/data'
+#        networks:
+#            - optimesh
+#        healthcheck:
+#            test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-geocoder} -d ${DB_DATABASE:-geocoder}"]
+#            interval: 10s
+#            timeout: 5s
+#            retries: 5
+
+    # Redis for caching and queues
+#    redis:
+#        container_name: ${APP_SERVICE_NAME:-peak-app}-redis
+#        image: redis:7-alpine
+#        ports:
+#            - '${FORWARD_REDIS_PORT:-6379}:6379'
+#        volumes:
+#            - 'geocoder-redis:/data'
+#        networks:
+#            - optimesh
+#        healthcheck:
+#            test: ["CMD", "redis-cli", "ping"]
+#            interval: 10s
+#            timeout: 5s
+#            retries: 5
+#        command: redis-server --appendonly yes
+
+    # For mailing testing purposes, run Mailpit container
+    # docker run -d --name mailpit-mailer --network optimesh  --restart unless-stopped -p 8025:8025 -p 1025:1025  axllent/mailpit
+
+networks:
+    optimesh:
+        driver: bridge
+        name: optimesh
+
+#volumes:
+#    geocoder-postgres:
+#        driver: local
+#    geocoder-redis:
+#        driver: local
