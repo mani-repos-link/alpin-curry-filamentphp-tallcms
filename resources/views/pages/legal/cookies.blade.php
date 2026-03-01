@@ -4,37 +4,40 @@
 @section('meta_description', __('site.legal_page.cookies_text'))
 
 @section('content')
-    <main>
+    <main id="main-content">
         <section class="container page-hero reveal">
             <span class="eyebrow">{{ __('site.nav.cookies') }}</span>
             <h1>{{ __('site.legal_page.cookies_title') }}</h1>
-            <p>Information about cookies and similar technologies used on this website.</p>
+            <p>{{ __('legal.cookies.page_intro') }}</p>
         </section>
 
         <section class="section">
             <div class="container legal-doc reveal">
+
                 <article class="legal-card legal-section">
-                    <h3>About This Policy</h3>
-                    <p>This Cookie Policy explains what cookies are, which ones we use, why we use them, and how you can control them.</p>
-                    <p><strong>Last updated:</strong> 1 March 2026</p>
-                    <p>This policy should be read alongside our <a href="{{ route('legal.privacy', ['locale' => app()->getLocale()]) }}">Privacy Policy</a>.</p>
+                    <h3>{{ __('legal.cookies.about.title') }}</h3>
+                    <p>{{ __('legal.cookies.about.body') }}</p>
+                    <p><strong>{{ __('site.legal_page.last_updated', [], null) ?: 'Last updated' }}:</strong> {{ __('legal.cookies.about.updated') }}</p>
+                    <p>{{ __('legal.cookies.about.privacy_ref') }}
+                        <a href="{{ route('legal.privacy', ['locale' => app()->getLocale()]) }}">{{ __('site.nav.privacy') }}</a>.
+                    </p>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>What Is a Cookie?</h3>
-                    <p>Cookies are small text files placed on your device by websites you visit. They are widely used to make websites work, or work more efficiently, and to provide analytics and personalisation information to website owners.</p>
-                    <p>We may also use similar tracking technologies such as local storage for storing your cookie consent preference on your device.</p>
+                    <h3>{{ __('legal.cookies.what_is.title') }}</h3>
+                    <p>{{ __('legal.cookies.what_is.body') }}</p>
+                    <p>{{ __('legal.cookies.what_is.note') }}</p>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>Legal Basis and Your Consent</h3>
-                    <p>Under GDPR (Regulation (EU) 2016/679) and Italian Legislative Decree 69/2012 (ePrivacy), <strong>non-essential cookies require your prior, informed, and freely given consent</strong> before they are placed on your device.</p>
-                    <p>When you first visit our website, a cookie consent banner is displayed. You may:</p>
+                    <h3>{{ __('legal.cookies.legal_basis.title') }}</h3>
+                    <p>{{ __('legal.cookies.legal_basis.body') }}</p>
+                    <p>{{ __('legal.cookies.legal_basis.when_you_visit') }}</p>
                     <ul>
-                        <li><strong>Accept all</strong> — allow both strictly necessary and analytics cookies.</li>
-                        <li><strong>Accept necessary only</strong> — allow only cookies that are essential for the website to function. No analytics data will be collected.</li>
+                        <li>{{ __('legal.cookies.legal_basis.option_all') }}</li>
+                        <li>{{ __('legal.cookies.legal_basis.option_nec') }}</li>
                     </ul>
-                    <p>Your preference is stored locally on your device for up to 12 months. You may change your preference at any time by using the button below or clearing your browser cookies.</p>
+                    <p>{{ __('legal.cookies.legal_basis.storage_note') }}</p>
                     <p>
                         <button
                             type="button"
@@ -42,135 +45,138 @@
                             onclick="document.getElementById('cookie-consent-banner').style.display='flex'; this.style.display='none';"
                             style="cursor:pointer; background:transparent; border:1px solid currentColor; border-radius:4px; padding:0.5em 1.2em; font-size:inherit;"
                         >
-                            Manage Cookie Preferences
+                            {{ __('legal.cookies.legal_basis.manage_btn') }}
                         </button>
                     </p>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>Cookie Categories</h3>
+                    <h3>{{ __('legal.cookies.categories.title') }}</h3>
                     <table class="legal-table">
                         <thead>
                             <tr>
-                                <th>Category</th>
-                                <th>Consent Required?</th>
-                                <th>Purpose</th>
+                                <th>{{ __('legal.cookies.categories.col_category') }}</th>
+                                <th>{{ __('legal.cookies.categories.col_consent') }}</th>
+                                <th>{{ __('legal.cookies.categories.col_purpose') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Strictly Necessary</strong></td>
-                                <td>No — always active</td>
-                                <td>Essential for the website to function. Includes CSRF security tokens and session management. Cannot be disabled.</td>
+                                <td>{{ __('legal.cookies.categories.necessary_label') }}</td>
+                                <td>{{ __('legal.cookies.categories.necessary_consent') }}</td>
+                                <td>{{ __('legal.cookies.categories.necessary_purpose') }}</td>
                             </tr>
                             <tr>
-                                <td><strong>Functionality</strong></td>
-                                <td>No — always active</td>
-                                <td>Stores your cookie consent preference so we do not ask you on every page.</td>
+                                <td>{{ __('legal.cookies.categories.functional_label') }}</td>
+                                <td>{{ __('legal.cookies.categories.functional_consent') }}</td>
+                                <td>{{ __('legal.cookies.categories.functional_purpose') }}</td>
                             </tr>
                             <tr>
-                                <td><strong>Analytics and Performance</strong></td>
-                                <td><strong>Yes — opt-in required</strong></td>
-                                <td>Measures anonymous usage trends and helps us improve website content. Loaded only after you accept analytics cookies.</td>
+                                <td>{{ __('legal.cookies.categories.analytics_label') }}</td>
+                                <td>{{ __('legal.cookies.categories.analytics_consent') }}</td>
+                                <td>{{ __('legal.cookies.categories.analytics_purpose') }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>Cookies We Use</h3>
+                    <h3>{{ __('legal.cookies.list.title') }}</h3>
                     <table class="legal-table">
                         <thead>
                             <tr>
-                                <th>Cookie / Key</th>
-                                <th>Category</th>
-                                <th>Purpose</th>
-                                <th>Duration</th>
+                                <th>{{ __('legal.cookies.list.col_cookie') }}</th>
+                                <th>{{ __('legal.cookies.list.col_category') }}</th>
+                                <th>{{ __('legal.cookies.list.col_purpose') }}</th>
+                                <th>{{ __('legal.cookies.list.col_duration') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>XSRF-TOKEN</td>
-                                <td>Strictly Necessary</td>
-                                <td>Cross-site request forgery protection for form submissions.</td>
-                                <td>Session</td>
+                                <td>{{ __('legal.cookies.list.cat_necessary') }}</td>
+                                <td>{{ __('legal.cookies.list.xsrf_purpose') }}</td>
+                                <td>{{ __('legal.cookies.list.duration_session') }}</td>
                             </tr>
                             <tr>
-                                <td>alpin_curry_session</td>
-                                <td>Strictly Necessary</td>
-                                <td>Maintains your web session.</td>
-                                <td>Session</td>
+                                <td>{{ config('session.cookie', 'laravel_session') }}</td>
+                                <td>{{ __('legal.cookies.list.cat_necessary') }}</td>
+                                <td>{{ __('legal.cookies.list.session_purpose') }}</td>
+                                <td>{{ __('legal.cookies.list.duration_session') }}</td>
                             </tr>
                             <tr>
-                                <td>alpin_cookie_consent (localStorage)</td>
-                                <td>Functionality</td>
-                                <td>Stores your cookie consent choice so the banner is not shown on every visit.</td>
-                                <td>12 months</td>
+                                <td>alpin_cookie_consent</td>
+                                <td>{{ __('legal.cookies.list.cat_functional') }}</td>
+                                <td>{{ __('legal.cookies.list.consent_purpose') }}</td>
+                                <td>{{ __('legal.cookies.list.duration_12m') }}</td>
                             </tr>
                             <tr>
                                 <td>_ga</td>
-                                <td>Analytics (opt-in)</td>
-                                <td>Google Analytics — distinguishes unique users for anonymous visit measurement.</td>
-                                <td>2 years</td>
+                                <td>{{ __('legal.cookies.list.cat_analytics') }}</td>
+                                <td>{{ __('legal.cookies.list.ga_purpose') }}</td>
+                                <td>{{ __('legal.cookies.list.duration_2y') }}</td>
                             </tr>
                             <tr>
                                 <td>_gid</td>
-                                <td>Analytics (opt-in)</td>
-                                <td>Google Analytics — groups user behaviour for 24-hour analytics.</td>
-                                <td>24 hours</td>
+                                <td>{{ __('legal.cookies.list.cat_analytics') }}</td>
+                                <td>{{ __('legal.cookies.list.gid_purpose') }}</td>
+                                <td>{{ __('legal.cookies.list.duration_24h') }}</td>
                             </tr>
                             <tr>
                                 <td>_gat</td>
-                                <td>Analytics (opt-in)</td>
-                                <td>Google Analytics — throttles request rate to the analytics server.</td>
-                                <td>1 minute</td>
+                                <td>{{ __('legal.cookies.list.cat_analytics') }}</td>
+                                <td>{{ __('legal.cookies.list.gat_purpose') }}</td>
+                                <td>{{ __('legal.cookies.list.duration_1m') }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>Analytics and Third-Party Services</h3>
-                    <p>We use Google Analytics (operated by Google LLC) to understand how visitors use this website. Analytics cookies are only loaded after you give your consent. The data collected is anonymised and aggregated — it is not used to identify you personally.</p>
+                    <h3>{{ __('legal.cookies.analytics.title') }}</h3>
+                    <p>{{ __('legal.cookies.analytics.body') }}</p>
                     <p>
-                        Google Analytics opt-out:
+                        {{ __('legal.cookies.analytics.optout_label') }}
                         <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a>
                     </p>
                     <p>
-                        Google Privacy Policy:
+                        {{ __('legal.cookies.analytics.privacy_label') }}
                         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>
                     </p>
-                    <p>Data transferred to Google may be processed in the United States. Google LLC participates in the EU-US Data Privacy Framework and provides appropriate safeguards under Art. 46 GDPR.</p>
+                    <p>{{ __('legal.cookies.analytics.transfers') }}</p>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>How to Manage Cookies in Your Browser</h3>
-                    <p>In addition to using our consent banner, you can control and delete cookies directly in your browser. Please refer to your browser's help documentation:</p>
+                    <h3>{{ __('legal.cookies.browser.title') }}</h3>
+                    <p>{{ __('legal.cookies.browser.intro') }}</p>
                     <ul>
-                        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome — Manage cookies</a></li>
-                        <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Mozilla Firefox — Manage cookies</a></li>
-                        <li><a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari — Manage cookies</a></li>
-                        <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge — Manage cookies</a></li>
+                        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">{{ __('legal.cookies.browser.chrome') }}</a></li>
+                        <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">{{ __('legal.cookies.browser.firefox') }}</a></li>
+                        <li><a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener">{{ __('legal.cookies.browser.safari') }}</a></li>
+                        <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">{{ __('legal.cookies.browser.edge') }}</a></li>
                     </ul>
-                    <p>Note that blocking all cookies may impair website functionality, including the ability to submit reservation forms.</p>
+                    <p>{{ __('legal.cookies.browser.warning') }}</p>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>Withdrawing Consent</h3>
-                    <p>You may withdraw your consent to analytics cookies at any time by:</p>
+                    <h3>{{ __('legal.cookies.withdraw.title') }}</h3>
+                    <p>{{ __('legal.cookies.withdraw.intro') }}</p>
                     <ul>
-                        <li>Clicking the "Manage Cookie Preferences" button above.</li>
-                        <li>Clearing your browser's cookies and local storage, which will reset your preference and show the consent banner on your next visit.</li>
-                        <li>Installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</li>
+                        @foreach(__('legal.cookies.withdraw.items') as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
                     </ul>
-                    <p>Withdrawing consent does not affect the lawfulness of any processing carried out before withdrawal.</p>
+                    <p>{{ __('legal.cookies.withdraw.note') }}</p>
                 </article>
 
                 <article class="legal-card legal-section">
-                    <h3>Changes to This Policy</h3>
-                    <p>This policy may be updated periodically to reflect changes in technology, law, or our practices. Please check this page regularly. Where changes are material, we will update the "Last updated" date at the top of this page.</p>
-                    <p>For cookie-related questions: <a href="mailto:{{ $restaurantContact['email'] ?? '' }}">{{ $restaurantContact['email'] ?? '' }}</a>, {{ $restaurantLegalName }}, {{ $restaurantAddressLine }}.</p>
+                    <h3>{{ __('legal.cookies.changes.title') }}</h3>
+                    <p>{{ __('legal.cookies.changes.body') }}</p>
+                    <p>{{ __('legal.cookies.contact_footer') }}
+                        <a href="mailto:{{ $restaurantContact['email'] ?? '' }}">{{ $restaurantContact['email'] ?? '' }}</a>
+                    </p>
                 </article>
+
             </div>
         </section>
     </main>

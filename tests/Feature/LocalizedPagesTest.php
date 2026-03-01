@@ -12,6 +12,7 @@ class LocalizedPagesTest extends TestCase
 
         $this->get('/it/menu')->assertStatus(200);
         $this->get('/de/gallery')->assertStatus(200);
+        $this->get('/en/faq')->assertStatus(200);
         $this->get('/en/legal')->assertStatus(200);
         $this->get('/en/legal/privacy')->assertStatus(200);
         $this->get('/it/legal/cookies')->assertStatus(200);
@@ -30,5 +31,15 @@ class LocalizedPagesTest extends TestCase
             ->assertSeeText('Piatti Signature')
             ->assertSeeText('Pollo al Burro')
             ->assertSeeText('€14.00');
+    }
+
+    public function test_faq_page_is_localized(): void
+    {
+        $response = $this->get('/it/faq');
+
+        $response
+            ->assertStatus(200)
+            ->assertSeeText('Domande Frequenti')
+            ->assertSeeText('Serve la prenotazione?');
     }
 }

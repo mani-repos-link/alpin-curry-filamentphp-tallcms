@@ -16,6 +16,13 @@ class FoodMenuCategoryForm
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Select::make('type')
+                    ->options([
+                        'food' => 'Food',
+                        'drink' => 'Drink',
+                    ])
+                    ->required()
+                    ->default('food'),
                 Select::make('display_type')
                     ->options([
                         'off' => 'Off',
@@ -24,7 +31,11 @@ class FoodMenuCategoryForm
                     ])
                     ->required()
                     ->default('off'),
-                TextInput::make('status')
+                Select::make('status')
+                    ->options([
+                        'active' => 'Active',
+                        'inactive' => 'Inactive',
+                    ])
                     ->required()
                     ->default('active'),
                 TextInput::make('order')
