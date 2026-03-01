@@ -35,4 +35,14 @@ return [
         ],
     ],
 
+    'reservations' => [
+        'notify_email' => env('RESERVATION_NOTIFY_EMAIL', env('MAIL_FROM_ADDRESS')),
+        'whatsapp_number' => env('RESERVATION_WHATSAPP_NUMBER', env('RESTAURANT_CONTACT_WHATSAPP_RAW', '393270077595')),
+    ],
+
+    'menu' => [
+        'endpoint' => env('MENU_API_GRAPHQL_ENDPOINT', ''),
+        'timeout' => (int) env('MENU_API_TIMEOUT', 8),
+    ],
+
 ];
