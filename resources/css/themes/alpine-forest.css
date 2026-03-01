@@ -1,0 +1,30 @@
+/*
+ * Theme: Alpine Forest
+ * Fresh greens inspired by South Tyrol's mountain forests.
+ */
+body[data-theme='alpine-forest'] {
+    --font-body: 'Inter Local', 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Iowan Old Style', 'Georgia', serif;
+    --bg: #eef5f0;
+    --bg-soft: #f9fdf9;
+    --ink: #13211c;
+    --muted: #3f5a50;
+    --brand: #216b4e;
+    --brand-deep: #154635;
+    --saffron: #b9dc8c;
+    --leaf: #1f7b57;
+    --card: #f8fcf8;
+    --line: #c6ddd0;
+    --body-grad-a: #f7fdf8;
+    --body-grad-b: #eef6f0;
+    --body-grad-c: #e5f0ea;
+    --contact-grad-start: #1b3e31;
+    --contact-grad-mid: #1e4f3d;
+    --contact-grad-end: #132d25;
+    --contact-title: #d5f5c6;
+    --contact-copy: #e6f6ee;
+    --contact-strong: #b8e688;
+    --contact-input-bg: rgba(245, 255, 250, 0.14);
+    --whatsapp-start: #2aa968;
+    --whatsapp-end: #1f7f4f;
+}

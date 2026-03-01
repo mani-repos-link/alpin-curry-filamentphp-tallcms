@@ -21,6 +21,14 @@ $defaultOptions = [
         'label' => 'Ivory Minimal',
         'color' => '#374b65',
     ],
+    'velvet-spice' => [
+        'label' => 'Velvet Spice',
+        'color' => '#ca7b3d',
+    ],
+    'golden-aroma' => [
+        'label' => 'Golden Aroma',
+        'color' => '#b87319',
+    ],
 ];
 
 $parsedOptions = [];

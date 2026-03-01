@@ -1,0 +1,33 @@
+/*
+ * Theme: Midnight Saffron
+ * Dark navy with warm amber accents — elegant evening atmosphere.
+ */
+body[data-theme='midnight-saffron'] {
+    --font-body: 'Inter Local', 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Iowan Old Style', 'Georgia', serif;
+    --bg: #101624;
+    --bg-soft: #1a2434;
+    --ink: #f3eee5;
+    --muted: #c2b8aa;
+    --brand: #ef8d2f;
+    --brand-deep: #bb5f14;
+    --saffron: #f1b562;
+    --leaf: #78b29f;
+    --card: #1f2a3d;
+    --line: #32445f;
+    --shadow: 0 20px 45px rgba(4, 9, 19, 0.48);
+    --body-grad-a: #141d2d;
+    --body-grad-b: #111927;
+    --body-grad-c: #0d131f;
+    --dot: rgba(243, 238, 229, 0.15);
+    --topbar-border: rgba(239, 141, 47, 0.24);
+    --contact-grad-start: #2a1f1f;
+    --contact-grad-mid: #3b2620;
+    --contact-grad-end: #1f1818;
+    --contact-title: #ffd9ad;
+    --contact-copy: #f6e9dd;
+    --contact-strong: #f8c173;
+    --contact-input-bg: rgba(255, 251, 246, 0.12);
+    --whatsapp-start: #3fb976;
+    --whatsapp-end: #21754a;
+}

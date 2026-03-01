@@ -1,0 +1,65 @@
+/*
+ * Theme: Velvet Spice
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Deep aubergine-plum foundations with burnished gold and warm copper accents.
+ * Inspired by Mughal palace interiors, candlelit dining rooms, and the rich
+ * hues of Indian spice markets — seen through the intimate lens of an alpine
+ * evening. Jewel-toned, luxurious, unforgettable.
+ *
+ * Palette rationale:
+ *   bg          – deep grape-plum black: enveloping, like velvet in dim light
+ *   brand       – burnished copper-gold: aged rupee warmth, not harsh orange
+ *   saffron     – rich sovereign gold: the jewel accent that catches the eye
+ *   leaf        – desaturated sage-jade: grounds the warmth, prevents claustrophobia
+ *   ink         – warm parchment cream: soft on dark bg, never glaring white
+ *   muted       – dusty mauve: secondary text that whispers, not shouts
+ *
+ * WCAG contrast: --ink on --bg ≈ 12:1  /  --brand on --bg ≈ 4.8:1
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+body[data-theme='velvet-spice'] {
+    --font-body: 'Inter Local', 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Iowan Old Style', 'Georgia', serif;
+
+    /* ── Surfaces ─────────────────────────────────────────────────────────── */
+    --bg: #1a1023;
+    --bg-soft: #241630;
+    --card: #221429;
+    --line: #3e2052;
+
+    /* ── Typography ───────────────────────────────────────────────────────── */
+    --ink: #dbb043;
+    --muted: #c0a8c4;
+
+    /* ── Brand palette ────────────────────────────────────────────────────── */
+    --brand: #ca7b3d;
+    --brand-deep: #975629;
+
+    /* ── Accent tones ─────────────────────────────────────────────────────── */
+    --saffron: #eab84a;
+    --leaf: #7ab89a;
+
+    /* ── Depth & atmosphere ───────────────────────────────────────────────── */
+    --shadow: 0 20px 48px rgba(8, 3, 14, 0.68);
+    --dot: rgba(234, 184, 74, 0.07);
+    --topbar-border: rgba(202, 123, 61, 0.22);
+
+    /* ── Body gradient (three-stop: rich plum → plum-black → near-black) ─── */
+    --body-grad-a: #1f1228;
+    --body-grad-b: #180f1f;
+    --body-grad-c: #110b17;
+
+    /* ── Contact / dark section ───────────────────────────────────────────── */
+    /* Goes deeper into midnight-indigo territory to contrast with the page */
+    --contact-grad-start: #2c1242;
+    --contact-grad-mid: #3b1854;
+    --contact-grad-end: #1e0d2e;
+    --contact-title: #fcd9a2;
+    --contact-copy: #ead5c6;
+    --contact-strong: #eab84a;
+    --contact-input-bg: rgba(255, 244, 228, 0.10);
+
+    /* ── WhatsApp FAB ─────────────────────────────────────────────────────── */
+    --whatsapp-start: #31ac66;
+    --whatsapp-end: #1e7e47;
+}

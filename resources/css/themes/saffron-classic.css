@@ -1,0 +1,33 @@
+/*
+ * Theme: Saffron Classic
+ * Warm saffron & deep terracotta — the restaurant's signature palette.
+ */
+body[data-theme='saffron-classic'] {
+    --font-body: 'Inter Local', 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Iowan Old Style', 'Georgia', serif;
+    --bg: #f7eddd;
+    --bg-soft: #fef8ee;
+    --ink: #221611;
+    --muted: #5f4c3f;
+    --brand: #8a2d17;
+    --brand-deep: #54190b;
+    --saffron: #e8a124;
+    --leaf: #2f5d4b;
+    --card: #fff8ef;
+    --line: #e6d8c2;
+    --shadow: 0 20px 45px rgba(34, 22, 17, 0.12);
+    --body-grad-a: #fdf5e8;
+    --body-grad-b: #f7eddd;
+    --body-grad-c: #f2e5d2;
+    --dot: rgba(34, 22, 17, 0.13);
+    --topbar-border: rgba(138, 45, 23, 0.14);
+    --contact-grad-start: #3e1c11;
+    --contact-grad-mid: #572615;
+    --contact-grad-end: #2a1712;
+    --contact-title: #ffdfaf;
+    --contact-copy: #f6e7d2;
+    --contact-strong: #ffcf73;
+    --contact-input-bg: rgba(255, 250, 244, 0.11);
+    --whatsapp-start: #1ea94f;
+    --whatsapp-end: #0d7e36;
+}

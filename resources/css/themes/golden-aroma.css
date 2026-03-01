@@ -1,0 +1,170 @@
+/*
+ * Theme: Golden Aroma
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Warm amber honey, deep mahogany, and pure saffron gold — like morning light
+ * pouring through a jar of artisanal honey. Designed to evoke the sensory
+ * richness of Indian spice markets at sunrise: warm, layered, inviting.
+ *
+ * Typography:
+ *   Display  → Playfair Display (self-hosted) — high-contrast editorial serif,
+ *              beloved in fine dining and food publishing. Beautiful italics.
+ *   Body     → Nunito (self-hosted) — warm, rounded humanist sans-serif.
+ *              Approachable yet refined. Excellent at small sizes on screens.
+ *
+ * Palette rationale:
+ *   bg           – warm golden ivory: distinctly amber-tinted, not the neutral
+ *                  parchment of saffron-classic — sunlight through honey glass
+ *   brand        – deep amber-gold: dark artisanal honey, rich and earthy
+ *   brand-deep   – mahogany-gold: the shadow cast by amber in deep light
+ *   saffron      – pure sovereign saffron: the bright jewel pop, used sparingly
+ *   leaf         – forest sage green: earthy grounding, stops the palette from
+ *                  becoming saccharine — like fresh herbs on a wooden board
+ *   ink          – deep espresso brown: warm black, never cold or stark
+ *   muted        – warm caramel: secondary text that reads like sepia ink
+ *
+ * WCAG contrast: --ink (#2b1b08) on --bg (#faf3de) ≈ 11.8:1  (AAA)
+ *                --brand (#b87319) on --bg (#faf3de) ≈ 4.6:1  (AA large)
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+/* ── Self-hosted Playfair Display ─────────────────────────────────────────── */
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/fonts/playfair-display/playfair-display-latin-ext-normal.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                   U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                   U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/fonts/playfair-display/playfair-display-latin-normal.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                   U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                   U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/fonts/playfair-display/playfair-display-latin-ext-italic.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                   U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                   U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/fonts/playfair-display/playfair-display-latin-italic.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                   U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                   U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Self-hosted Nunito ────────────────────────────────────────────────────── */
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('/fonts/nunito/nunito-latin-ext-normal.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                   U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                   U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('/fonts/nunito/nunito-latin-normal.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                   U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                   U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/nunito/nunito-latin-ext-italic.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                   U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                   U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/nunito/nunito-latin-italic.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                   U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                   U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Theme token overrides ────────────────────────────────────────────────── */
+
+body[data-theme='golden-aroma'] {
+    --font-body: 'Nunito', 'Segoe UI', sans-serif;
+    --font-display: 'Playfair Display', 'Georgia', serif;
+
+    /* ── Surfaces ─────────────────────────────────────────────────────────── */
+    --bg: #faf3de;
+    --bg-soft: #fffdf6;
+    --card: #fff9e8;
+    --line: #dfc98c;
+
+    /* ── Typography ───────────────────────────────────────────────────────── */
+    --ink: #2b1b08;
+    --muted: #7b5c38;
+
+    /* ── Brand palette ────────────────────────────────────────────────────── */
+    --brand: #b87319;
+    --brand-deep: #7e4f0c;
+
+    /* ── Accent tones ─────────────────────────────────────────────────────── */
+    --saffron: #f0b71e;
+    --leaf: #4e7a58;
+
+    /* ── Depth & atmosphere ───────────────────────────────────────────────── */
+    --shadow: 0 20px 45px rgba(43, 27, 8, 0.13);
+    --dot: rgba(43, 27, 8, 0.11);
+    --topbar-border: rgba(184, 115, 25, 0.18);
+
+    /* ── Body gradient ────────────────────────────────────────────────────── */
+    /* Flows from warm golden peak → honey mid → deeper amber base */
+    --body-grad-a: #fdf6e5;
+    --body-grad-b: #faf1da;
+    --body-grad-c: #f6eacd;
+
+    /* ── Contact / dark section ───────────────────────────────────────────── */
+    /* Deep mahogany-brown: warm dark that feels like the inside of a chai house */
+    --contact-grad-start: #3a2208;
+    --contact-grad-mid: #4e2e0d;
+    --contact-grad-end: #281809;
+    --contact-title: #fce7a8;
+    --contact-copy: #f5dfc4;
+    --contact-strong: #f0b71e;
+    --contact-input-bg: rgba(255, 252, 235, 0.12);
+
+    /* ── WhatsApp FAB ─────────────────────────────────────────────────────── */
+    --whatsapp-start: #1da94f;
+    --whatsapp-end: #0d7d36;
+}

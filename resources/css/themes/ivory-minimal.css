@@ -1,0 +1,30 @@
+/*
+ * Theme: Ivory Minimal
+ * Clean ivory & slate blue — refined, understated elegance.
+ */
+body[data-theme='ivory-minimal'] {
+    --font-body: 'Inter Local', 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Iowan Old Style', 'Georgia', serif;
+    --bg: #f8f6f1;
+    --bg-soft: #fffdfa;
+    --ink: #1f2225;
+    --muted: #5c656d;
+    --brand: #374b65;
+    --brand-deep: #243447;
+    --saffron: #d9c18f;
+    --leaf: #5f6f63;
+    --card: #fefcf9;
+    --line: #d9d8d1;
+    --body-grad-a: #fdfcf8;
+    --body-grad-b: #f5f3ee;
+    --body-grad-c: #ecebe6;
+    --contact-grad-start: #313a47;
+    --contact-grad-mid: #3b4657;
+    --contact-grad-end: #25303b;
+    --contact-title: #e8dfc8;
+    --contact-copy: #edf0f4;
+    --contact-strong: #d7c8a4;
+    --contact-input-bg: rgba(245, 250, 255, 0.14);
+    --whatsapp-start: #2f8f52;
+    --whatsapp-end: #1f6940;
+}

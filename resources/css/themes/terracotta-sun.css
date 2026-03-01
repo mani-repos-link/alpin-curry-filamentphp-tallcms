@@ -1,0 +1,30 @@
+/*
+ * Theme: Terracotta Sun
+ * Sun-baked terracotta with earthy warmth — Mediterranean summer feel.
+ */
+body[data-theme='terracotta-sun'] {
+    --font-body: 'Inter Local', 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Iowan Old Style', 'Georgia', serif;
+    --bg: #faf0ea;
+    --bg-soft: #fff8f4;
+    --ink: #2c1e1a;
+    --muted: #6a5048;
+    --brand: #b64d34;
+    --brand-deep: #7f2f21;
+    --saffron: #f2b166;
+    --leaf: #7a8552;
+    --card: #fff7f1;
+    --line: #ebd2c5;
+    --body-grad-a: #fff7f1;
+    --body-grad-b: #fbece3;
+    --body-grad-c: #f5dfd2;
+    --contact-grad-start: #58271d;
+    --contact-grad-mid: #7b3527;
+    --contact-grad-end: #3c1f19;
+    --contact-title: #ffd4a3;
+    --contact-copy: #fde9d7;
+    --contact-strong: #ffc37e;
+    --contact-input-bg: rgba(255, 247, 241, 0.13);
+    --whatsapp-start: #3ba75d;
+    --whatsapp-end: #236f3c;
+}
