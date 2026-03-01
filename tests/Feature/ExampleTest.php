@@ -14,6 +14,13 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
+        $response->assertRedirect('/en');
+    }
+
+    public function test_the_localized_homepage_loads_successfully(): void
+    {
+        $response = $this->get('/en');
+
         $response->assertStatus(200);
     }
 }
