@@ -1,0 +1,339 @@
+/* ============================================================
+   menu-print.css — Print-optimised stylesheet for Alpin Curry
+   Used by both the iframe preview and the dompdf PDF export.
+   ============================================================ */
+
+/* ── CSS Custom Properties ─────────────────────────────────── */
+:root {
+    --mp-accent:        #c8861e;
+    --mp-accent-dark:   #9b641a;
+    --mp-text:          #1a1a1a;
+    --mp-text-muted:    #555;
+    --mp-text-light:    #888;
+    --mp-border:        #d4af72;
+    --mp-bg:            #fffef9;
+    --mp-section-bg:    #fdf8ef;
+    --mp-font-serif:    Georgia, "Times New Roman", Times, serif;
+    --mp-font-sans:     "Helvetica Neue", Arial, Helvetica, sans-serif;
+    --mp-item-gap:      0.75rem;
+    --mp-section-gap:   2rem;
+}
+.colors-neutral {
+    --mp-accent:      #333;
+    --mp-accent-dark: #111;
+    --mp-border:      #aaa;
+    --mp-bg:          #fff;
+    --mp-section-bg:  #f9f9f9;
+}
+
+/* ── Page / Reset ───────────────────────────────────────────── */
+@page { size: A4 portrait; margin: 18mm 16mm; }
+@page.paper-A5     { size: A5 portrait;    margin: 14mm 12mm; }
+@page.paper-Letter { size: letter portrait; margin: 18mm 20mm; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    background: var(--mp-bg);
+    color: var(--mp-text);
+    font-family: var(--mp-font-serif);
+    font-size: 10pt;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ── Shared Header ──────────────────────────────────────────── */
+.mp-header { text-align: center; margin-bottom: 1.5rem; padding-bottom: 1rem; }
+.mp-header h1 {
+    font-size: 2rem; font-weight: 700;
+    letter-spacing: 0.04em; line-height: 1.15; color: var(--mp-accent-dark);
+}
+.mp-header .subtitle {
+    font-size: 0.85rem; color: var(--mp-text-muted);
+    font-style: italic; margin-top: 0.2rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+}
+.mp-header .contact-line { font-size: 0.75rem; color: var(--mp-text-light); margin-top: 0.5rem; }
+
+/* ── Shared Footer ──────────────────────────────────────────── */
+.mp-footer {
+    margin-top: 2rem; padding-top: 1rem;
+    border-top: 1px solid var(--mp-border);
+    text-align: center; font-size: 0.72rem;
+    color: var(--mp-text-light); font-style: italic;
+}
+
+/* ── Allergen pill tags (text-only fallback) ────────────────── */
+.mp-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.25rem; }
+.mp-tag {
+    background: var(--mp-accent); color: #fff;
+    font-size: 0.6rem; font-family: var(--mp-font-sans);
+    font-weight: 600; padding: 0.1rem 0.4rem;
+    border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.colors-neutral .mp-tag { background: #555; }
+
+/* ================================================================
+   ALLERGEN ICON SYSTEM
+   Small coloured square badges, one per EU allergen.
+   Works in browsers and dompdf (solid bg + text).
+   ================================================================ */
+.mp-ai {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 3px;
+    font-size: 0.46rem;
+    font-weight: 900;
+    font-family: var(--mp-font-sans);
+    color: #fff;
+    line-height: 1;
+    text-transform: uppercase;
+    vertical-align: middle;
+    flex-shrink: 0;
+    letter-spacing: 0;
+}
+/* EU 14 allergen colours */
+.mp-ai-gl  { background: #d97706; }   /* gluten        — amber        */
+.mp-ai-cr  { background: #dc2626; }   /* crustaceans   — red          */
+.mp-ai-eg  { background: #ca8a04; }   /* eggs          — dark yellow  */
+.mp-ai-fi  { background: #2563eb; }   /* fish          — blue         */
+.mp-ai-pn  { background: #92400e; }   /* peanuts       — brown        */
+.mp-ai-sy  { background: #16a34a; }   /* soybeans      — green        */
+.mp-ai-ml  { background: #0284c7; }   /* milk/lactose  — sky blue     */
+.mp-ai-nt  { background: #7c2d12; }   /* nuts          — dark brown   */
+.mp-ai-ce  { background: #15803d; }   /* celery        — forest green */
+.mp-ai-ms  { background: #b45309; }   /* mustard       — amber-brown  */
+.mp-ai-se  { background: #78350f; }   /* sesame        — walnut       */
+.mp-ai-su  { background: #7c3aed; }   /* sulphites     — violet       */
+.mp-ai-lu  { background: #ea580c; }   /* lupin         — orange       */
+.mp-ai-mo  { background: #0f766e; }   /* molluscs      — teal         */
+.mp-ai-xx  { background: #6b7280; }   /* unknown       — gray         */
+
+/* Row of icons beneath an item */
+.mp-ai-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.18rem;
+    margin-top: 0.2rem;
+    align-items: center;
+}
+
+/* Multi-language description block */
+.mp-lang-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin-top: 0.12rem;
+}
+.mp-lang-badge {
+    font-size: 0.55rem;
+    font-weight: 800;
+    font-family: var(--mp-font-sans);
+    letter-spacing: 0.06em;
+    color: var(--mp-accent);
+    flex-shrink: 0;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+.mp-lang-desc {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--mp-text-muted);
+    line-height: 1.4;
+}
+
+/* ================================================================
+   ALLERGEN LEGEND (footer block)
+   ================================================================ */
+.mp-allergen-legend {
+    margin-top: 1.5rem;
+    padding-top: 0.875rem;
+    border-top: 1.5px dashed var(--mp-border);
+}
+.mp-legend-heading {
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mp-text-light);
+    margin-bottom: 0.55rem;
+    font-family: var(--mp-font-sans);
+}
+.mp-legend-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem 0.9rem;
+}
+.mp-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.65rem;
+    color: var(--mp-text-muted);
+    font-family: var(--mp-font-sans);
+    white-space: nowrap;
+}
+
+/* ================================================================
+   CLASSIC LAYOUT
+   ================================================================ */
+.layout-classic .mp-header  { border-bottom: 2px double var(--mp-accent); }
+.layout-classic .mp-header h1 { font-family: var(--mp-font-serif); }
+
+.layout-classic .mp-section { margin-bottom: var(--mp-section-gap); page-break-inside: avoid; }
+.layout-classic .mp-section-title {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mp-accent-dark); margin-bottom: 0.6rem;
+}
+.layout-classic .mp-section-title::before,
+.layout-classic .mp-section-title::after {
+    content: '◆'; font-size: 0.5rem; color: var(--mp-accent); flex-shrink: 0;
+}
+.layout-classic .mp-section-title::before { margin-right: 0.2rem; }
+.layout-classic .mp-section-title::after  { margin-left:  0.2rem; }
+
+.layout-classic .mp-item { margin-bottom: var(--mp-item-gap); page-break-inside: avoid; }
+.layout-classic .mp-item-row { display: flex; align-items: baseline; gap: 0.25rem; }
+.layout-classic .mp-item-name  { font-weight: 600; font-size: 0.92rem; }
+.layout-classic .mp-item-dots  {
+    flex: 1; border-bottom: 1px dotted var(--mp-border); margin-bottom: 3px; min-width: 1rem;
+}
+.layout-classic .mp-item-price {
+    font-weight: 700; font-size: 0.92rem; color: var(--mp-accent-dark); white-space: nowrap;
+}
+.layout-classic .mp-item-description {
+    font-size: 0.78rem; color: var(--mp-text-muted);
+    font-style: italic; margin-top: 0.15rem; padding-left: 0.2rem;
+}
+.layout-classic .mp-item-allergy-inline {
+    font-size: 0.7rem; color: var(--mp-text-light); margin-left: 0.25rem;
+}
+
+/* ── Zig-Zag variant (Classic only) ────────────────────────── */
+.pg-zigzag .layout-classic .mp-item:nth-child(even) .mp-item-description,
+.pg-zigzag .layout-classic .mp-item:nth-child(even) .mp-ai-row {
+    padding-left: 2rem;
+}
+.pg-zigzag .layout-classic .mp-item:nth-child(odd) .mp-item-description,
+.pg-zigzag .layout-classic .mp-item:nth-child(odd) .mp-ai-row {
+    padding-right: 2rem;
+}
+
+/* ================================================================
+   ELEGANT LAYOUT
+   ================================================================ */
+.layout-elegant { font-family: var(--mp-font-serif); }
+.layout-elegant .mp-page-wrapper {
+    border: 2px solid var(--mp-accent); padding: 1.5rem; min-height: 90vh; position: relative;
+}
+.layout-elegant .mp-page-wrapper::before,
+.layout-elegant .mp-page-wrapper::after {
+    content: '✦'; position: absolute; font-size: 1.2rem; color: var(--mp-accent); line-height: 1;
+}
+.layout-elegant .mp-page-wrapper::before { top: 0.4rem;    left:  0.6rem; }
+.layout-elegant .mp-page-wrapper::after  { bottom: 0.4rem; right: 0.6rem; }
+
+.layout-elegant .mp-header {
+    border-bottom: 1px solid var(--mp-border); padding-bottom: 1.2rem; margin-bottom: 1.5rem;
+}
+.layout-elegant .mp-header h1  { font-size: 2.2rem; letter-spacing: 0.08em; color: var(--mp-accent-dark); }
+.layout-elegant .mp-header .subtitle { font-size: 0.8rem; letter-spacing: 0.2em; }
+
+.layout-elegant .mp-section { margin-bottom: 1.8rem; page-break-inside: avoid; }
+.layout-elegant .mp-section-title {
+    font-size: 0.85rem; font-style: italic; font-weight: 700;
+    color: var(--mp-accent-dark); letter-spacing: 0.12em; text-transform: uppercase;
+    border-bottom: 1px solid var(--mp-border); padding-bottom: 0.35rem; margin-bottom: 0.8rem;
+}
+.layout-elegant .mp-item { margin-bottom: 1rem; page-break-inside: avoid; }
+.layout-elegant .mp-item-row {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem;
+}
+.layout-elegant .mp-item-name  { font-size: 0.92rem; font-weight: 600; letter-spacing: 0.02em; }
+.layout-elegant .mp-item-price { font-size: 0.92rem; font-weight: 700; color: var(--mp-accent-dark); white-space: nowrap; }
+.layout-elegant .mp-item-description { font-size: 0.78rem; color: var(--mp-text-muted); font-style: italic; margin-top: 0.3rem; line-height: 1.4; }
+.layout-elegant .mp-tags { margin-top: 0.3rem; }
+.layout-elegant .mp-tag  { font-size: 0.58rem; }
+
+/* ================================================================
+   MODERN LAYOUT
+   ================================================================ */
+.layout-modern { font-family: var(--mp-font-sans); }
+.layout-modern .mp-header {
+    background: var(--mp-accent); color: #fff;
+    padding: 1.2rem 1.5rem; margin: -0.5rem -0.5rem 1.5rem; border-radius: 4px 4px 0 0;
+}
+.layout-modern .mp-header h1 {
+    font-size: 1.7rem; font-family: var(--mp-font-sans); font-weight: 800;
+    letter-spacing: 0.02em; color: #fff;
+}
+.layout-modern .mp-header .subtitle  { color: rgba(255,255,255,0.85); font-style: normal; font-size: 0.78rem; letter-spacing: 0.1em; }
+.layout-modern .mp-header .contact-line { color: rgba(255,255,255,0.75); }
+.colors-neutral .layout-modern .mp-header { background: #222; }
+
+.layout-modern .mp-section { margin-bottom: var(--mp-section-gap); page-break-inside: avoid; }
+.layout-modern .mp-section-title {
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--mp-accent-dark);
+    padding-bottom: 0.3rem; border-bottom: 3px solid var(--mp-accent);
+    margin-bottom: 0.8rem; display: inline-block;
+}
+.colors-neutral .layout-modern .mp-section-title { color: #111; border-color: #333; }
+
+.layout-modern .mp-items-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.5rem;
+}
+.layout-modern .mp-item { page-break-inside: avoid; }
+.layout-modern .mp-item-row { display: flex; align-items: baseline; justify-content: space-between; gap: 0.25rem; }
+.layout-modern .mp-item-name  { font-size: 0.85rem; font-weight: 700; color: var(--mp-text); }
+.layout-modern .mp-item-price { font-size: 0.85rem; font-weight: 700; color: var(--mp-accent-dark); white-space: nowrap; }
+.layout-modern .mp-item-description { font-size: 0.72rem; color: var(--mp-text-muted); margin-top: 0.1rem; line-height: 1.35; }
+.layout-modern .mp-tags { margin-top: 0.2rem; }
+.layout-modern .mp-tag  { font-size: 0.55rem; }
+
+/* ── Print media overrides ──────────────────────────────────── */
+@media print {
+    html, body { background: white; }
+    .mp-doc {
+        max-width: none !important; padding: 0 !important;
+        box-shadow: none !important; border-radius: 0 !important;
+        margin: 0 !important; background: transparent !important;
+    }
+    .mp-page-wrapper { border-color: #000 !important; }
+    .layout-modern .mp-header {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        margin: 0 0 1.5rem !important; border-radius: 0 !important;
+    }
+    a { text-decoration: none; color: inherit; }
+}
+
+/* ── Screen preview chrome ──────────────────────────────────── */
+@media screen {
+    html { font-size: 15px; }
+    body { padding: 1.5rem; background: #f0ede8; min-width: 600px; }
+
+    .mp-doc {
+        max-width: 740px;
+        margin: 0 auto;
+        background: var(--mp-bg);
+        padding: 2rem 2.5rem;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+        border-radius: 6px;
+    }
+
+    /* Page width variants */
+    .pg-full    .mp-doc { max-width: none; }
+    .pg-compact .mp-doc { max-width: 560px; }
+    /* pg-standard is the default (740px) */
+
+    .layout-elegant .mp-doc       { padding: 0; }
+    .layout-elegant .mp-page-wrapper { padding: 2rem 2.5rem; }
+    .layout-modern  .mp-header { margin: -2rem -2.5rem 1.5rem; border-radius: 6px 6px 0 0; }
+}
