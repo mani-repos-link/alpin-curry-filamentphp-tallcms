@@ -10,10 +10,19 @@ services:
         PROJECT_BUILD_HOOKS_PATH: .scripts/.docker-snippets/php
         JS_RUNTIME_REQUIRE_NODE: "true"
         JS_RUNTIME_NODE_VERSION: "24"
-        JS_RUNTIME_REQUIRE_YARN: "true"
         PHP_EXT_XDEBUG: "false"
         ENABLE_HEALTHCHECK: "true"
         PHP_EXT_GD: "true"
+        PHP_EXT_IMAGICK: "true"
+        PHP_EXT_VIPS: "true"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '0.50'
+#          memory: 512M
+#        reservations:
+#          cpus: '0.10'
+#          memory: 128M
     restart: always
     ports:
       - '${APP_PORT:-8150}:80'
@@ -39,16 +48,16 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik"
       # HTTPS Router
-      - "traefik.http.routers.alpincurry.rule=Host(`alpincurry.it`)"
-      - "traefik.http.services.geoendpoint.loadbalancer.server.port=80"
-      - "traefik.http.routers.geoendpoint.entrypoints=websecure"
-      - "traefik.http.routers.geoendpoint.tls.certresolver=lets-encrypt"
-      - "traefik.http.routers.geoendpoint.tls=true"
-      - "traefik.http.middlewares.geoendpoint-redirect-https.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.geoendpoint-redirect-https.redirectscheme.permanent=true"
-      - "traefik.http.routers.geoendpoint-http.rule=Host(`fastgeo.net`)"
-      - "traefik.http.routers.geoendpoint-http.entrypoints=web"
-      - "traefik.http.routers.geoendpoint-http.middlewares=geoendpoint-redirect-https"
+      - "traefik.http.routers.alpincurry.rule=Host(`alpincurry.it`) || Host(`www.alpincurry.it`)"
+      - "traefik.http.routers.alpincurry.entrypoints=websecure"
+      - "traefik.http.routers.alpincurry.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.alpincurry.tls=true"
+      - "traefik.http.services.alpincurry.loadbalancer.server.port=80"
+      # HTTP to HTTPS Redirect
+      - "traefik.http.middlewares.alpincurry-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.alpincurry-http.rule=Host(`alpincurry.it`) || Host(`www.alpincurry.it`)"
+      - "traefik.http.routers.alpincurry-http.entrypoints=web"
+      - "traefik.http.routers.alpincurry-http.middlewares=alpincurry-https-redirect"
 
 
 networks:
