@@ -23,9 +23,9 @@
     </x-ux.reveal>
 
     <x-ux.reveal class="hero-media" :delay="120">
-        <video autoplay muted loop playsinline preload="none" poster="{{ asset('assets/images/dishes/image.png') }}">
+        <video autoplay muted loop playsinline preload="none" poster="{{ asset('assets/images/dishes/rise-with-curries.png') }}">
             <source src="{{ asset('assets/videos/cooking-and-serving.mp4') }}" type="video/mp4">
-            <img src="{{ asset('assets/images/dishes/image.png') }}" alt="{{ __('site.hero.video_alt') }}">
+            <img src="{{ asset('assets/images/dishes/rise-with-curries.png') }}" alt="{{ __('site.hero.video_alt') }}">
         </video>
         <div class="hero-badge">
             <div>
