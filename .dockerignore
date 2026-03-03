@@ -1,6 +1,5 @@
 .git
 .gitmodules
-.docker
 .idea
 .claude
 .gemini
@@ -8,7 +7,6 @@ node_modules
 storage/framework/cache/data/*
 storage/framework/sessions/*
 storage/framework/views/*
-storage/logs/*
 docker-compose*.yml
 README.md
 CHANGELOG.md

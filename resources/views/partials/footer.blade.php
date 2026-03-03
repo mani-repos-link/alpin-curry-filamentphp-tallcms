@@ -8,7 +8,7 @@
             <div class="footer-brand-block footer-panel">
                 <img
                     class="footer-logo"
-                    src="{{ asset($restaurantBrand['logo_primary_path'] ?? 'assets/images/gallery/angular-extra/logos/logo_ori.png') }}"
+                    src="{{ asset($restaurantBrand['logo_primary_path'] ?? 'assets/images/gallery/logos/logo_ori.png') }}"
                     alt="{{ $restaurantName }} logo"
                     width="200"
                     height="101"

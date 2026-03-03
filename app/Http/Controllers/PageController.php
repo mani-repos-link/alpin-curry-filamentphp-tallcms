@@ -153,9 +153,6 @@ class PageController extends Controller
             str_contains($relativePath, '/landscape/1280x780/') => 3,
             str_contains($relativePath, '/portrait/1080x1350/') => 4,
             str_contains($relativePath, '/portrait/720x900/') => 5,
-            str_contains($relativePath, '/angular-extra/menu/') => 6,
-            str_contains($relativePath, '/angular-extra/section/') => 7,
-            str_contains($relativePath, '/angular-extra/logos/') => 8,
             default => 9,
         };
     }

@@ -5,9 +5,9 @@ return [
     'legal_name' => env('RESTAURANT_LEGAL_NAME', 'Alpin Curry SAS'),
 
     'brand' => [
-        'logo_primary_path' => env('RESTAURANT_LOGO_PRIMARY_PATH', 'assets/images/gallery/angular-extra/logos/logo_ori.png'),
-        'logo_mark_path' => env('RESTAURANT_LOGO_MARK_PATH', 'assets/images/gallery/angular-extra/logos/logo.png'),
-        'logo_negative_path' => env('RESTAURANT_LOGO_NEGATIVE_PATH', 'assets/images/gallery/angular-extra/logos/Logo_neg.png'),
+        'logo_primary_path' => env('RESTAURANT_LOGO_PRIMARY_PATH', 'assets/images/logos/logo_ori.png'),
+        'logo_mark_path' => env('RESTAURANT_LOGO_MARK_PATH', 'assets/images/logos/logo.png'),
+        'logo_negative_path' => env('RESTAURANT_LOGO_NEGATIVE_PATH', 'assets/images/logos/Logo_neg.png'),
         'favicon_path' => env('RESTAURANT_FAVICON_PATH', 'favicon.ico'),
         'favicon_32_path' => env('RESTAURANT_FAVICON_32_PATH', 'favicon-32x32.png'),
         'favicon_16_path' => env('RESTAURANT_FAVICON_16_PATH', 'favicon-16x16.png'),
